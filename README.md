@@ -29,4 +29,7 @@ A simple popup display tool for iOS App.
   Email: zhang_xm15@163.com  
 
   0.1.0  
-  First version of CZPopupController.
+  First version of CZPopupController.  
+
+  0.1.1  
+  Add parameter to control the interval bewteen popups.  
