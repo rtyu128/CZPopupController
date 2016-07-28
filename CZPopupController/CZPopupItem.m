@@ -21,27 +21,31 @@
 
 + (instancetype)itemWithPopupView:(__kindof UIView *)popupView
                        popupLevel:(PopupLevel)popupLevel
+                         interval:(NSTimeInterval)interval
                        completion:(PopupCompletionBlock)completion
 {
-    return [[CZPopupItem alloc] initWithPopupView:popupView
-                                       popupLevel:popupLevel completion:completion];
+    return [[CZPopupItem alloc] initWithPopupView:popupView popupLevel:popupLevel
+                                         interval:interval completion:completion];
 }
 
 + (instancetype)itemWithPopupViewController:(__kindof UIViewController *)popupViewController
                                  popupLevel:(PopupLevel)popupLevel
+                                   interval:(NSTimeInterval)interval
                                  completion:(PopupCompletionBlock)completion
 {
-    return [[CZPopupItem alloc] initWithPopupViewController:popupViewController
-                                                 popupLevel:popupLevel completion:completion];
+    return [[CZPopupItem alloc] initWithPopupViewController:popupViewController popupLevel:popupLevel
+                                                   interval:interval completion:completion];
 }
 
 - (instancetype)initWithPopupView:(__kindof UIView *)popupView
                        popupLevel:(PopupLevel)popupLevel
+                         interval:(NSTimeInterval)interval
                        completion:(PopupCompletionBlock)completion
 {
     if (self = [super init]) {
         _popupView = popupView;
         _popupLevel = popupLevel;
+        _popupInterval = interval >= 0 ? interval : cz_defaultPopupInterval;
         _popupCompletion = [completion copy];
         _popupViewController = [[UIViewController alloc] init];
         _popupViewController.view.backgroundColor = [UIColor clearColor];
@@ -58,11 +62,13 @@
 
 - (instancetype)initWithPopupViewController:(__kindof UIViewController *)popupViewController
                                  popupLevel:(PopupLevel)popupLevel
+                                   interval:(NSTimeInterval)interval
                                  completion:(PopupCompletionBlock)completion
 {
     if (self = [super init]) {
         _popupViewController = popupViewController;
         _popupLevel = popupLevel;
+        _popupInterval = interval >= 0 ? interval : cz_defaultPopupInterval;
         _popupCompletion = [completion copy];
         if ([self isPopupLevelLegal]) {
             if ([popupViewController isKindOfClass:[UIViewController class]]) {

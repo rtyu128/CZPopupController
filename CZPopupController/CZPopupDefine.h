@@ -16,4 +16,6 @@ typedef NS_ENUM(NSInteger, PopupLevel){
 
 typedef void (^PopupCompletionBlock)( UIViewController *__nonnull popupViewController, PopupLevel popupLevel);
 
+static const NSTimeInterval cz_defaultPopupInterval = 0.75;
+
 #endif /* CZPopupDefine_h */

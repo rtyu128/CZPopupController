@@ -17,6 +17,10 @@
 
 - (void)displayPopupWithLevel:(PopupLevel)level completion:(nullable PopupCompletionBlock)completion;
 
+- (void)displayPopupWithLevel:(PopupLevel)level
+                     interval:(NSTimeInterval)interval
+                   completion:(nullable PopupCompletionBlock)completion;
+
 - (void)dismissPopup;
 
 @end

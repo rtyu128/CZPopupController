@@ -110,10 +110,12 @@
         [self.foremostPopup.popupViewController removeFromParentViewController];
         [self clean];
         
-        __weak __typeof(&*self)weakSelf = self;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.75 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakSelf showForemostPopup];
-        });
+        if (_foremostPopup) {
+            NSTimeInterval interval = _foremostPopup.popupInterval;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(interval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self showForemostPopup];
+            });
+        }
     }
 }
 

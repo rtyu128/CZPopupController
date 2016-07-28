@@ -15,15 +15,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) UIViewController *popupViewController;
 @property (nonatomic, assign, readonly) PopupLevel popupLevel;
+@property (nonatomic, assign, readonly) NSTimeInterval popupInterval;
 @property (nonatomic, assign, readonly, getter=isPopupLegal) BOOL popupLegalFlag;
 @property (nonatomic, copy, readonly, nullable) PopupCompletionBlock popupCompletion;
 
 + (instancetype)itemWithPopupView:(__kindof UIView *)popupView
                        popupLevel:(PopupLevel)popupLevel
+                         interval:(NSTimeInterval)interval
                        completion:(nullable PopupCompletionBlock)completion;
 
 + (instancetype)itemWithPopupViewController:(__kindof UIViewController *)popupViewController
                                  popupLevel:(PopupLevel)popupLevel
+                                   interval:(NSTimeInterval)interval
                                  completion:(nullable PopupCompletionBlock)completion;
 
 @end

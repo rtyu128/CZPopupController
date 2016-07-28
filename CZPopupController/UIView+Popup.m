@@ -14,18 +14,26 @@
 
 - (void)displayPopup
 {
-    [self displayPopupWithLevel:PopupLevelOrder completion:nil];
+    [self displayPopupWithLevel:PopupLevelOrder interval:cz_defaultPopupInterval completion:nil];
 }
 
 - (void)displayPopupWithLevel:(PopupLevel)level
 {
-    [self displayPopupWithLevel:level completion:nil];
+    [self displayPopupWithLevel:level interval:cz_defaultPopupInterval completion:nil];
 }
 
 - (void)displayPopupWithLevel:(PopupLevel)level completion:(PopupCompletionBlock)completion
 {
+    [self displayPopupWithLevel:level interval:cz_defaultPopupInterval completion:completion];
+}
+
+- (void)displayPopupWithLevel:(PopupLevel)level
+                     interval:(NSTimeInterval)interval
+                   completion:(PopupCompletionBlock)completion
+{
     if (!self.popupItem) {
-        CZPopupItem *item = [CZPopupItem itemWithPopupView:self popupLevel:level completion:completion];
+        CZPopupItem *item = [CZPopupItem itemWithPopupView:self popupLevel:level
+                                                  interval:interval completion:completion];
         self.popupItem = item;
         [[CZPopupController sharedController] displayPopup:self.popupItem];
     }
