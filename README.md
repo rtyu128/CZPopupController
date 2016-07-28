@@ -22,3 +22,6 @@
   There might be something need to optimize, and I'll give example and supply it with Cocoapods later.  
   It's my pleasure to receive any suggestion.  
   Email: zhang_xm15@163.com
+
+  0.1.0
+  First version of CZPopupController.
